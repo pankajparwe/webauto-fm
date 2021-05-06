@@ -12,17 +12,18 @@ import java.util.concurrent.TimeUnit;
 public class testscript {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
-        driver.get("http://demo.automationtesting.in");
+        driver.get("http://demo.automationtesting.in/Register.html");
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        /*
 
 
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys("pankaj.parwe@gmail.com");
         driver.findElement(By.xpath("//img[@id='enterimg']")).click();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-         /*
+
 
 
         WebElement email = driver.findElement(By.id("email"));
@@ -40,7 +41,7 @@ public class testscript {
                 System.out.println("test case is failed");
             }
 
-        */
+         */
 
 
         driver.findElement(By.xpath("//input[@ng-model='FirstName']")).sendKeys("Pankaj");
@@ -51,10 +52,35 @@ public class testscript {
         driver.findElement(By.xpath("//input[@ng-model='Phone']")).sendKeys("9890865105");
         driver.findElement(By.xpath("//input[@ng-model='radiovalue' and @value ='Male']")).click();
         driver.findElement(By.xpath("//input[@type='checkbox' and @value ='Cricket']")).click();
+
+        //langauges
+        WebElement lanListElement = driver.findElement(By.id("msdd"));
+       Select lanmultiselect = new Select(lanListElement);
+
+        lanmultiselect.selectByVisibleText("Hindi");
+
+
+
+
         //skills dropdown
         WebElement SkillsLIstElement = driver.findElement(By.id("Skills"));
         Select SkillsDropdown = new Select(SkillsLIstElement);
         SkillsDropdown.selectByVisibleText("Adobe Photoshop");
+
+
+        //country
+        WebElement countryList = driver.findElement(By.id("countries"));
+        Select countrydropdown = new Select(countryList);
+        countrydropdown.selectByVisibleText("India");
+
+        //select country
+        WebElement selectcountrylist = driver.findElement(By.id("select2-country-container"));
+        Select selectcountryelement = new Select(selectcountrylist);
+        selectcountryelement.selectByVisibleText("India");
+
+
+
+
 
 
         //year
@@ -65,9 +91,9 @@ public class testscript {
 
 
         //month
-       // WebElement MonthLestElement = driver.findElement(By.className("form-control ng-pristine ng-invalid ng-invalid-required ng-touched"));
-       // Select MonthDropdown = new Select(MonthLestElement);
-        //MonthDropdown.selectByVisibleText("February");
+        WebElement MonthLestElement = driver.findElement(By.xpath("//select[@ng-model='monthbox']"));
+        Select MonthDropdown = new Select(MonthLestElement);
+        MonthDropdown.selectByVisibleText("February");
 
         //day
         WebElement DayListElement = driver.findElement(By.id("daybox"));
@@ -82,6 +108,9 @@ public class testscript {
 
         driver.findElement(By.xpath("//input[@id='firstpassword']")).sendKeys("Pankaj@1234");
         driver.findElement(By.xpath("//input[@id='secondpassword']")).sendKeys("Pankaj@1234");
+        driver.quit();
+
+
 
     }
 }
